@@ -193,7 +193,21 @@
                   </select>
                 </div>
               </div>
-              <Metadata
+	      <div class="form-group row">
+	        <label class="col-sm-3 col-form-label">Order</label>
+		<div class="col-sm-8">
+		   <input v-model="order" type="number" class="form-control" />
+		</div>
+	      </div>
+	      <div class="form-group row">
+	        <label class="col-sm-3 col-form-label">Order</label>
+		<div class="col-sm-8">
+		<select class="form-control" @change="setOrder">
+		<option
+		  v-for="option in allCategories"
+		>
+	      </div>
+	      <Metadata
                 :metadata="annotation.metadata"
                 ref="metadata"
                 exclude="name"

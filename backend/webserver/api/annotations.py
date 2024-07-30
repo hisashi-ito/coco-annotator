@@ -14,6 +14,8 @@ create_annotation = reqparse.RequestParser()
 create_annotation.add_argument(
     'image_id', type=int, required=True, location='json')
 create_annotation.add_argument('category_id', type=int, location='json')
+# 2024.07.30
+create_annotation.add_argument('order', type=int, location='json')
 create_annotation.add_argument('isbbox', type=bool, location='json')
 create_annotation.add_argument('metadata', type=dict, location='json')
 create_annotation.add_argument('segmentation', type=list, location='json')
@@ -38,6 +40,8 @@ class Annotation(Resource):
         args = create_annotation.parse_args()
         image_id = args.get('image_id')
         category_id = args.get('category_id')
+        # 2024.07.30
+        order = args.get('order')
         isbbox = args.get('isbbox')
         metadata = args.get('metadata', {})
         segmentation = args.get('segmentation', [])

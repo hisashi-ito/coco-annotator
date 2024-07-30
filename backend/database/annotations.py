@@ -12,12 +12,16 @@ from flask_login import current_user
 class AnnotationModel(DynamicDocument):
 
     COCO_PROPERTIES = ["id", "image_id", "category_id", "segmentation",
-                       "iscrowd", "color", "area", "bbox", "metadata",
+                       "iscrowd", "color", "area", "bbox", "order", "metadata",
                        "keypoints", "isbbox"]
 
     id = SequenceField(primary_key=True)
     image_id = IntField(required=True)
     category_id = IntField(required=True)
+
+    # 2024.07.30
+    order = IntField(default=0)
+
     dataset_id = IntField()
 
     segmentation = ListField(default=[])
